@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-hello
+spec:
+  containers:
+    - name: ubuntu
+      image: ubuntu:trusty
+      args: 
+      - echo
+      - Hello World

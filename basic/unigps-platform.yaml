@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: unigps
+  labels:
+    app: unigps
+spec:
+  containers:
+  - name: unigps-platform
+    image: unigps/platform-server
+    ports:
+    - containerPort: 8080

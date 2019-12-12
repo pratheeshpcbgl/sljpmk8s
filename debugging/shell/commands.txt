@@ -1,0 +1,23 @@
+kubectl get pod shell-demo
+kubectl exec -it shell-demo -- /bin/bash
+
+root@shell-demo:/# ls /
+root@shell-demo:/# cat /proc/mounts
+root@shell-demo:/# cat /proc/1/maps
+root@shell-demo:/# apt-get update
+root@shell-demo:/# apt-get install -y tcpdump
+root@shell-demo:/# tcpdump
+root@shell-demo:/# apt-get install -y lsof
+root@shell-demo:/# lsof
+root@shell-demo:/# apt-get install -y procps
+root@shell-demo:/# ps aux
+root@shell-demo:/# ps aux | grep nginx
+
+root@shell-demo:/# echo Hello shell demo > /usr/share/nginx/html/index.html
+root@shell-demo:/# apt-get update
+root@shell-demo:/# apt-get install curl
+root@shell-demo:/# curl localhost
+
+kubectl exec shell-demo env
+
+kubectl exec -it my-pod --container main-app -- /bin/bash
