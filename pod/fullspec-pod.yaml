@@ -1,0 +1,90 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"labels":{"name":"nginx"},"name":"nginx","namespace":"default"},"spec":{"containers":[{"image":"nginx","name":"nginx","ports":[{"containerPort":80}]}]}}
+  creationTimestamp: "2019-12-13T18:40:32Z"
+  labels:
+    name: nginx
+  name: nginx
+  namespace: default
+  resourceVersion: "257141"
+  selfLink: /api/v1/namespaces/default/pods/nginx
+  uid: 9860a87d-d7cd-4ea3-abde-4d2e17b200d0
+spec:
+  containers:
+  - image: nginx
+    imagePullPolicy: Always
+    name: nginx
+    ports:
+    - containerPort: 80
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-cbp95
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: minikube
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-cbp95
+    secret:
+      defaultMode: 420
+      secretName: default-token-cbp95
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2019-12-13T18:40:32Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2019-12-13T18:40:47Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2019-12-13T18:40:47Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2019-12-13T18:40:32Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://d2690c82f3b3f7e488598f5046f294f5edb3ae354c66110cbcbf94fbd56119df
+    image: nginx:latest
+    imageID: docker-pullable://nginx@sha256:50cf965a6e08ec5784009d0fccb380fc479826b6e0e65684d9879170a9df8566
+    lastState: {}
+    name: nginx
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2019-12-13T18:40:46Z"
+  hostIP: 192.168.99.101
+  phase: Running
+  podIP: 172.17.0.5
+  podIPs:
+  - ip: 172.17.0.5
+  qosClass: BestEffort
+  startTime: "2019-12-13T18:40:32Z"

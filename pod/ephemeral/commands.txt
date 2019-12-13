@@ -1,0 +1,7 @@
+kubectl replace --raw /api/v1/namespaces/default/pods/example-pod/ephemeralcontainers  -f ec.json
+
+
+kubectl describe pod example-pod
+kubectl attach -it example-pod -c debugger
+ps auxww
+
