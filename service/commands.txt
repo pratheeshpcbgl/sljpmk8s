@@ -1,0 +1,19 @@
+kubectl apply -f ./run-my-nginx.yaml
+kubectl get pods -l run=my-nginx -o wide
+kubectl get pods -l run=my-nginx -o yaml | grep podIP
+kubectl expose deployment/my-nginx
+kubectl get svc my-nginx
+kubectl describe svc my-nginx
+kubectl get ep my-nginx
+kubectl exec my-nginx-<pod-name> -- printenv | grep SERVICE
+kubectl scale deployment my-nginx --replicas=0; kubectl scale deployment my-nginx --replicas=2;
+
+kubectl get pods -l run=my-nginx -o wide
+kubectl exec my-nginx-<pod-name> -- printenv | grep SERVICE
+
+kubectl get services kube-dns --namespace=kube-system
+kubectl run curl --image=radial/busyboxplus:curl -i --tty
+[ root@curl-131556218-9fnch:/ ]$ nslookup my-nginx
+
+
+
