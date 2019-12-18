@@ -5,7 +5,7 @@ metadata:
  labels:
    app: myapp
 spec:
- restartPolicy: Never
+ restartPolicy: Always
  containers:
  - name: myapp-container
    image: busybox:1.28

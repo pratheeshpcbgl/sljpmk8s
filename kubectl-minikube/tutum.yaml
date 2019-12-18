@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello
+  labels:
+    name: hellow
+spec:
+  containers:
+  - name: hello
+    image: tutum/hello-world
+    ports:
+    - containerPort: 80

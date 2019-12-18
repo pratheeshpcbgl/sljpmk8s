@@ -15,3 +15,5 @@ spec:
   containers:
   - name: pause
     image: k8s.gcr.io/pause:3.1
+
+# maxSkew describes the degree to which Pods may be unevenly distributed. It’s the maximum permitted difference between the number of matching Pods in any two topology domains of a given topology type. It must be greater than zero

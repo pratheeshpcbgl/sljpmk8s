@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: springdb
+  labels:
+    app: springdb
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: springdb
+    tier: frontend
+  type: LoadBalancer
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wp-pv-claim
+  labels:
+    app: springdb
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: springdb
+  labels:
+    app: springdb
+spec:
+  selector:
+    matchLabels:
+      app: springdb
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: springdb
+        tier: frontend
+    spec:
+      containers:
+      - image: springdb:4.8-apache
+        name: springdb
+        env:
+        - name: spring.datasource.url
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: datasource.url
+        - name: spring.datasource.username
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: username
+        - name: spring.datasource.password
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+        ports:
+        - containerPort: 80
+          name: springdb
